@@ -1,11 +1,14 @@
 import 'package:douga2/AuthScreen/login_screen.dart';
 import 'package:douga2/AuthScreen/signup_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import './HomeScreen/home_screen.dart';
+import './HomeScreen/welcome_screen.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,6 +21,8 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => LoginScreen(),
         '/signup': (context) => SignupScreen(),
+        '/welcome': (context) => WelcomeScreen(),
+      '/home': (context) => HomeScreen(),
       },
     );
   }

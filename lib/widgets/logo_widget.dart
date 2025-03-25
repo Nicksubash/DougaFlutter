@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class DougaLogo extends StatelessWidget {
+  const DougaLogo({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(

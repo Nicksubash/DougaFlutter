@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../widgets/logo_widget.dart';
 
 class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
+
   @override
   _SignupScreenState createState() => _SignupScreenState();
 }
@@ -144,6 +146,11 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget _buildSignupButton() {
     return ElevatedButton(
       onPressed: _isLoading ? null : _submitForm,
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
+        backgroundColor: Colors.green, // Updated property name
+        disabledBackgroundColor: Colors.green.withOpacity(0.5),
+      ),
       child: _isLoading
           ? SizedBox(
               height: 20,
@@ -154,11 +161,6 @@ class _SignupScreenState extends State<SignupScreen> {
               ),
             )
           : Text('Sign Up', style: TextStyle(fontSize: 18)),
-      style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-        backgroundColor: Colors.green, // Updated property name
-        disabledBackgroundColor: Colors.green.withOpacity(0.5),
-      ),
     );
   }
 

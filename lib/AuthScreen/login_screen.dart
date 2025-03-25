@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import '../widgets/logo_widget.dart';
 
 class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
@@ -10,6 +12,10 @@ class _LoginScreenState extends State<LoginScreen> {
   final _formKey = GlobalKey<FormState>();
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+
+  //hardcode
+  final String _fakeEmail ="subash@gmail.com";
+  final String _fakePassword = "123456";
 
   @override
   Widget build(BuildContext context) {
@@ -55,12 +61,23 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       // Add login logic
+                      String enteredEmail  = _emailController.text;
+                      String enterdPassword = _passwordController.text;
+
+                      //fake login
+                      if(enteredEmail == _fakeEmail && enterdPassword == _fakePassword){
+                        Navigator.pushReplacementNamed(context, '/welcome');
+                      }else{
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Invaild Email Or Password'))
+                        );
+                      }
                     }
                   },
-                  child: Text('Login', style: TextStyle(fontSize: 18)),
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
                   ),
+                  child: Text('Login', style: TextStyle(fontSize: 18)),
                 ),
                 SizedBox(height: 20),
                 Row(
