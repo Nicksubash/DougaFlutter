@@ -1,9 +1,11 @@
-import 'package:douga2/AuthScreen/login_screen.dart';
-import 'package:douga2/AuthScreen/signup_screen.dart';
 import 'package:flutter/material.dart';
 import './HomeScreen/home_screen.dart';
 import './HomeScreen/welcome_screen.dart';
+import 'package:douga2/AuthScreen/login_screen.dart';
+import 'package:douga2/AuthScreen/signup_screen.dart';
+import './widgets/main_navigation.dart';
 
+// Main Application entry point
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -22,9 +24,8 @@ class MyApp extends StatelessWidget {
         '/': (context) => LoginScreen(),
         '/signup': (context) => SignupScreen(),
         '/welcome': (context) => WelcomeScreen(),
-      '/home': (context) => HomeScreen(),
+        '/home': (context) => MainNavigation(),
       },
     );
   }
-
 }
