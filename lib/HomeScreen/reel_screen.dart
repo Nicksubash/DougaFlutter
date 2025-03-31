@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
 class ReelScreen extends StatefulWidget {
+  const ReelScreen({super.key});
+
   @override
   _ReelScreenState createState() => _ReelScreenState();
 }
@@ -125,7 +127,7 @@ class _ReelScreenState extends State<ReelScreen> {
       children: [
         Icon(icon, color: Colors.white, size: 28),
         SizedBox(height: 4),
-        Text('${count.formatCount()}', 
+        Text(count.formatCount(), 
           style: TextStyle(color: Colors.white, fontSize: 12)),
       ],
     );

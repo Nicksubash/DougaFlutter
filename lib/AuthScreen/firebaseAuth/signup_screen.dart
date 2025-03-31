@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../widgets/logo_widget.dart';
+import '../../widgets/logo_widget.dart';
+import './../../service/firebaseService/auth_service.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
@@ -30,13 +31,32 @@ class _SignupScreenState extends State<SignupScreen> {
     if (_formKey.currentState!.validate()) {
       setState(() => _isLoading = true);
       
+      try{
+        final authService = AuthService();
+        String result = await authService.signUp(
+          _emailController.text.trim(),
+          _passwordController.text.trim(),
+          _nameController.text.trim(),
+           context
+           );
+
+           if(result =="Success"){
+            Navigator.pushReplacementNamed(context, "/welcome");
+           }else{
+              print("Error during signup: $result");
+           }
+      }catch(e){
+        print("Error during signup: $e");
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Error: $e"))
+        );
+      }finally{
+        setState(()=> _isLoading = false);
+      }
       // Simulate API call delay
       await Future.delayed(Duration(seconds: 2));
       
       setState(() => _isLoading = false);
-      
-      // Add your signup logic here
-      // Navigator.pushReplacementNamed(context, '/home');
     }
   }
 
@@ -118,7 +138,7 @@ class _SignupScreenState extends State<SignupScreen> {
       ),
       validator: (value) {
         if (value!.isEmpty) return 'Please enter your password';
-        if (value.length < 6) return 'Password must be at least 6 characters';
+        if (value.length < 6) return 'Password must be at least 6 characterdsdsdss';
         return null;
       },
     );

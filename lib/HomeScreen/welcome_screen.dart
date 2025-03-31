@@ -1,4 +1,4 @@
-import 'package:douga2/AuthScreen/auth_service.dart';
+import 'package:douga2/providers/auth_provider.dart';
 import 'package:douga2/widgets/falling_icons_background.dart';
 import 'package:douga2/widgets/gradient_title.dart';
 import 'package:douga2/widgets/social_media_button.dart';
@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,17 +71,23 @@ class WelcomeScreen extends StatelessWidget {
       SocialMediaButton(
         icon: FontAwesomeIcons.instagram,
         color: Colors.pink,
-        onPressed: () => AuthService.linkSocialMedia("Instagram"),
+        onPressed: (){
+          print("Social media linking feature not available.");
+        },
       ),
       SocialMediaButton(
         icon: FontAwesomeIcons.tiktok,
         color: Colors.black,
-        onPressed: () => AuthService.linkSocialMedia("TikTok"),
+        onPressed: () {
+          print("Social media linking feature not available.");
+        },
       ),
       SocialMediaButton(
         icon: FontAwesomeIcons.youtube,
         color: Colors.red,
-        onPressed: () => AuthService.linkSocialMedia("YouTube"),
+        onPressed: (){
+          print("Social media linking feature not available.");
+        },
       ),
     ],
   );
