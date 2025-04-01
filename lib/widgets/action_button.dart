@@ -5,10 +5,10 @@ class ActionButton extends StatelessWidget {
   final VoidCallback onPressed; // Action to perform on press
 
   const ActionButton({
-    Key? key,
+    super.key,
     required this.label,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

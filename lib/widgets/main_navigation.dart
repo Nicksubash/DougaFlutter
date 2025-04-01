@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import '../HomeScreen/home_screen.dart';  
-import '../HomeScreen/reel_screen.dart';
-import '../HomeScreen/analytics_screen.dart';
-import '../HomeScreen/setting_screen.dart';
+import '../Screens/home_screen.dart';  
+import '../Screens/reel_screen.dart';
+import '../Screens/analytics_screen.dart';
+import '../Screens/setting_screen.dart';
 
 class MainNavigation extends StatefulWidget {
   const MainNavigation({super.key});

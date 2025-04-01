@@ -8,16 +8,6 @@ plugins {
 android {
     namespace = "com.example.douga2"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_11.toString()
-    }
 
     defaultConfig {
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
@@ -30,6 +20,15 @@ android {
         versionName = flutter.versionName
     }
 
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
@@ -37,6 +36,7 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
+    ndkVersion = "25.2.9519653"  
 }
 
 flutter {

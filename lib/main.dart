@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart'; 
-import './HomeScreen/welcome_screen.dart';
+import 'Screens/welcome_screen.dart';
 import 'package:douga2/AuthScreen/firebaseAuth/signup_screen.dart';
 import './widgets/main_navigation.dart';
 import './providers/auth_provider.dart' as myAuth;

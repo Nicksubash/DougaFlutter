@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
+//Pure business logic, no UI awareness
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -60,5 +61,27 @@ class AuthService {
   // Placeholder for linking social media (to be implemented)
   Future<void> linkSocialMedia(String platform) async {
     print("Linking to $platform (To be implemented)");
+  }
+
+  Future<String> signIn(String email, String password) async{
+    try{
+      await _auth.signInWithEmailAndPassword(email: email, password: password);
+      return "Sucess";
+    } on FirebaseAuthException catch(e){
+          print("FirebaseAuthException: Code = ${e.code}, Message = ${e.message}"); // Debugging
+      if(e.code=="user-not-found"){
+        return "No user found with this email";
+      }else if (e.code =="wrong-password"){
+        return "Incorrect password";
+      }else if (e.code =="invalid-email"){
+        return "Invalid email format";
+      }else if (e.code =="user-disabled"){
+        return "This account has been disabled";
+      }else{
+        return "Login error: ${e.message}";
+      }
+    }catch(e){
+      return "An unexpected error occurred";
+    }
   }
 }

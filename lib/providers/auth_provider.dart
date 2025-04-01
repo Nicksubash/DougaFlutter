@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
+//State management, error handling, UI coordination
 class AuthProvider with ChangeNotifier {
   User? _user;
   bool _isLoading = false;
@@ -32,7 +33,8 @@ class AuthProvider with ChangeNotifier {
         password: password.trim(),
       );
     } on FirebaseAuthException catch (e) {
-      _error = _parseFirebaseError(e);
+      // _error = _parseFirebaseError(e);
+      _error = e.message;
       notifyListeners();
       throw _error!;
     } finally {

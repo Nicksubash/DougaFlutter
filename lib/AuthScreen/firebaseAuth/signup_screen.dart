@@ -1,3 +1,4 @@
+import 'package:douga2/utils/AppString.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/logo_widget.dart';
 import './../../service/firebaseService/auth_service.dart';
@@ -168,8 +169,8 @@ class _SignupScreenState extends State<SignupScreen> {
       onPressed: _isLoading ? null : _submitForm,
       style: ElevatedButton.styleFrom(
         padding: EdgeInsets.symmetric(horizontal: 50, vertical: 15),
-        backgroundColor: Colors.green, // Updated property name
-        disabledBackgroundColor: Colors.green.withOpacity(0.5),
+        backgroundColor: Colors.blue, // Updated property name
+        disabledBackgroundColor: Colors.blue.withOpacity(0.5),
       ),
       child: _isLoading
           ? SizedBox(
@@ -180,7 +181,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 color: Colors.white,
               ),
             )
-          : Text('Sign Up', style: TextStyle(fontSize: 18)),
+          : Text(Appstring.signUp, style: TextStyle(fontSize: 18), ),
     );
   }
 

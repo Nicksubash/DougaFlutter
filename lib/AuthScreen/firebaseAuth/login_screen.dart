@@ -1,7 +1,10 @@
+import 'package:douga2/AuthScreen/firebaseAuth/forgot_password_screen.dart';
+import 'package:douga2/utils/AppString.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:douga2/providers/auth_provider.dart';
 import '../../widgets/logo_widget.dart';
+import './../../providers/auth_provider.dart';
+import '../../service/firebaseService/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -9,29 +12,33 @@ class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
-
 class _LoginScreenState extends State<LoginScreen> {
+  final AuthService authService = AuthService();
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  String? errorMessage; // Holds the login error message
+
   void _login(BuildContext context) async {
-    if (_formKey.currentState!.validate()) {
-      final authProvider = Provider.of<AuthProvider>(context, listen: false);
-      
-      try {
-        await authProvider.signIn(
-          _emailController.text,
-          _passwordController.text,
-        );
-        // Navigation is handled automatically via AuthCheckScreen
-      } catch (e) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(authProvider.error ?? 'Login failed')),
-        );
-      }
+  if (_formKey.currentState!.validate()) {
+    final authService = AuthService();
+    String result = await authService.signIn(
+      _emailController.text.trim(),
+      _passwordController.text.trim(),
+    );
+
+    setState(() {
+      errorMessage = result; // Ensure this updates the UI
+    });
+
+    if (result == "Success") {
+      // Navigate to home screen
+      Navigator.pushReplacementNamed(context, '/home');
     }
   }
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +81,36 @@ class _LoginScreenState extends State<LoginScreen> {
                     return null;
                   },
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
+
+                //Forgot password 
+                Align(
+                  alignment: Alignment.center,
+                  child: TextButton(
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context)=>ForgotPasswordScreen()),
+                      );
+                    },
+                    child: const Text(
+                      "Forgot Password?",
+                      style: TextStyle(color: Colors.blue, fontSize: 16),
+                    )
+                    ),
+                ),
+                const SizedBox(height: 10),
+                // Show error message if present
+                if (errorMessage != null)
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10),
+                    child: Text(
+                      errorMessage!,
+                      style: const TextStyle(color: Colors.red, fontSize: 14),
+                    ),
+                  ),
+                
+                const SizedBox(height: 20),
                 ElevatedButton(
                   onPressed: authProvider.isLoading ? null : () => _login(context),
                   style: ElevatedButton.styleFrom(
@@ -88,7 +124,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Text("Don't have an account?"),
+                    const Text(Appstring.noAccount),
                     TextButton(
                       onPressed: () {
                         Navigator.pushNamed(context, '/signup');

@@ -1,4 +1,3 @@
-import 'package:douga2/providers/auth_provider.dart';
 import 'package:douga2/widgets/falling_icons_background.dart';
 import 'package:douga2/widgets/gradient_title.dart';
 import 'package:douga2/widgets/social_media_button.dart';
