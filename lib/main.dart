@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart'; 
-import 'Screens/welcome_screen.dart';
-import 'package:douga2/AuthScreen/firebaseAuth/signup_screen.dart';
-import './widgets/main_navigation.dart';
+import 'Screens/main_navigation/welcome_screen.dart';
+import 'package:douga2/Screens/firebaseAuthScreen/signup_screen.dart';
+import 'Screens/main_navigation/main_navigation.dart';
 import './providers/auth_provider.dart' as myAuth;
 import './providers/auth_check_screen.dart';
+import './routes.dart';
+import './providers/tab_provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,10 +29,12 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
+   @override
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => myAuth.AuthProvider()),
+        ChangeNotifierProvider(create: (_) => TabProvider()), // New
       ],
       child: MaterialApp(
         title: 'Douga',
@@ -38,14 +42,32 @@ class MyApp extends StatelessWidget {
           primaryColor: Colors.lightBlue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-        initialRoute: '/',
-        routes: {
-          '/': (context) => const AuthCheckScreen(),
-          '/signup': (context) => const SignupScreen(),
-          '/welcome': (context) => const WelcomeScreen(),
-          '/home': (context) => const MainNavigation(),
-        },
+        // initialRoute: AppRoutes.initial,
+        onGenerateRoute: AppRoutes.generateRoute, // Updated
       ),
     );
   }
+
+
+  // Widget build(BuildContext context) {
+  //   return MultiProvider(
+  //     providers: [
+  //       ChangeNotifierProvider(create: (_) => myAuth.AuthProvider()),
+  //     ],
+  //     child: MaterialApp(
+  //       title: 'Douga',
+  //       theme: ThemeData(
+  //         primaryColor: Colors.lightBlue,
+  //         visualDensity: VisualDensity.adaptivePlatformDensity,
+  //       ),
+  //       initialRoute: '/',
+  //       routes: {
+  //         '/': (context) => const AuthCheckScreen(),
+  //         '/signup': (context) => const SignupScreen(),
+  //         '/welcome': (context) => const WelcomeScreen(),
+  //         '/home': (context) => const MainNavigation(),
+  //       },
+  //     ),
+  //   );
+  // }
 }

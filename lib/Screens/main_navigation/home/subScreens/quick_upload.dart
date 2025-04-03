@@ -1,3 +1,4 @@
+import 'package:douga2/Screens/uploadScreen/upload_screen.dart';
 import 'package:douga2/utils/AppString.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
@@ -50,7 +51,12 @@ class QuickUpload extends StatelessWidget{
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-            onPressed: _onStartUpload,
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const UploadScreen()),
+              );
+            },
           ),
         ],
       ),
@@ -58,6 +64,6 @@ class QuickUpload extends StatelessWidget{
   }
 
   void _onStartUpload(){
-
+  
   }
 }

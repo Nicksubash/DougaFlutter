@@ -1,9 +1,9 @@
-import 'package:douga2/AuthScreen/firebaseAuth/forgot_password_screen.dart';
+import 'package:douga2/Screens/firebaseAuthScreen/forgot_password_screen.dart';
 import 'package:douga2/utils/AppString.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../widgets/logo_widget.dart';
-import './../../providers/auth_provider.dart';
+import '../../providers/auth_provider.dart';
 import '../../service/firebaseService/auth_service.dart';
 
 class LoginScreen extends StatefulWidget {
