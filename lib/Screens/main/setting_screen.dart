@@ -2,7 +2,7 @@ import 'package:douga2/service/firebaseService/auth_service.dart';
 import 'package:douga2/widgets/action_button.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import '../utils/UserUtils.dart';
+import '../../utils/UserUtils.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});

@@ -3,13 +3,13 @@ import 'package:douga2/widgets/media_source.dart';
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:image_picker/image_picker.dart'; // Import image_picker
-import './subScreens/connected_platform.dart';
-import './subScreens/recent_upload.dart';
-import './subScreens/performance_metrics.dart';
-import './subScreens/welcome_header.dart';
-import './subScreens/quick_upload.dart';
+import 'subScreens/connected_platform.dart';
+import 'subScreens/recent_upload.dart';
+import 'subScreens/performance_metrics.dart';
+import 'subScreens/welcome_header.dart';
+import 'subScreens/quick_upload.dart';
 import 'dart:io';
-import './../service/image_picker_service.dart';
+import '../../../service/image_picker_service.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
         children: [
           const WelcomeHeader(), // Use the new WelcomeHeader widget
           const SizedBox(height: 24),
-          QuickUpload(onStartUpload: _onStartUpload), // Use QuickUploadCard
+          QuickUpload(), // Use QuickUploadCard
           const SizedBox(height: 24),
           ConnectedPlatforms(
             onPlatformConnect: _onPlatformConnect,
