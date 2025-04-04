@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart'; 
 import 'Screens/welcome_screen.dart';
 import 'package:douga2/AuthScreen/firebaseAuth/signup_screen.dart';
-import './widgets/main_navigation.dart';
+import 'navigation/main_navigation.dart';
 import './providers/auth_provider.dart' as myAuth;
 import './providers/auth_check_screen.dart';
 

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:douga2/Screens/uploadscreens/upload_screen.dart'; // Import UploadScreen
+import '../../../uploadscreens/upload_screen.dart';
 
 class QuickUpload extends StatelessWidget {
   const QuickUpload({super.key});
