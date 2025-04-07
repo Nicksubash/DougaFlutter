@@ -1,7 +1,7 @@
 import 'package:douga2/utils/AppString.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/logo_widget.dart';
-import './../../service/firebaseService/auth_service.dart';
+import '../../service/firebaseService/auth_service.dart';
 
 class SignupScreen extends StatefulWidget {
   const SignupScreen({super.key});
