@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:provider/provider.dart'; 
+import 'package:provider/provider.dart';
 import 'Screens/welcome_screen.dart';
 import 'package:douga2/Screens/authScreen/signup_screen.dart';
 import 'navigation/main_navigation.dart';
 import './providers/auth_provider.dart' as myAuth;
 import './providers/auth_check_screen.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart'; 
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: ".env"); // Load the .env file
   await Firebase.initializeApp(
-    options: const FirebaseOptions(
-      apiKey: "AIzaSyBgOZBGDhzl-hwgGQYKjIccbeCTshiYzHY",
-      authDomain: "flutter-web-connection-ccf9c.firebaseapp.com",
-      projectId: "flutter-web-connection-ccf9c",
-      storageBucket: "flutter-web-connection-ccf9c.appspot.com",
-      messagingSenderId: "888892998490",
-      appId: "1:888892998490:web:c6d3d8b55f20c60781a963",
-      measurementId: "G-Z1HCDGMT02",
+    options: FirebaseOptions(
+      apiKey: dotenv.env['FIREBASE_API_KEY']!, // Access API keys from .env
+      authDomain: dotenv.env['FIREBASE_AUTH_DOMAIN']!,
+      projectId: dotenv.env['FIREBASE_PROJECT_ID']!,
+      storageBucket: dotenv.env['FIREBASE_STORAGE_BUCKET']!,
+      messagingSenderId: dotenv.env['FIREBASE_MESSAGING_SENDER_ID']!,
+      appId: dotenv.env['FIREBASE_APP_ID']!,
+      measurementId: dotenv.env['FIREBASE_MEASUREMENT_ID']!,
     ),
   );
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

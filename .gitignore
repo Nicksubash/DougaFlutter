@@ -20,6 +20,8 @@ migrate_working_dir/
 
 #ignore the nodemodeles:
 node_modules/
+#for APK files
+*.env
 
 
 # The .vscode folder contains launch configuration and tasks you configure in
@@ -48,3 +50,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 .qodo
+
